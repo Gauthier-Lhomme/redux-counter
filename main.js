@@ -26,17 +26,25 @@ const counterReducer = (state = initialState, action) => {
 const { createStore } = Redux;
 const store = createStore(counterReducer);
 
-//getState() return the current value
-const render = () => console.log(store.getState());
+const counterRender = document.getElementById("counter-render");
+const incrementButton = document.getElementById("button-increment");
+const decrementButton = document.getElementById("button-decrement");
+
+// MAIN
+const render = () => {
+  //getState() return the current value
+  counterRender.innerText = store.getState();
+};
+
+//display the value before the first action
+render();
 
 //subscribe will be triggered every time the state change
 store.subscribe(render);
 
-store.dispatch(incrementAction);
-// 1
-
-store.dispatch(decrementAction);
-// 0
-
-store.dispatch(incrementAction);
-// 1
+incrementButton.addEventListener("click", () =>
+  store.dispatch(incrementAction)
+);
+decrementButton.addEventListener("click", () =>
+  store.dispatch(decrementAction)
+);
