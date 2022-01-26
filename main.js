@@ -1,3 +1,11 @@
+const incrementAction = {
+  type: "INCREMENT",
+};
+
+const decrementAction = {
+  type: "DECREMENT",
+};
+
 const counterReducer = (state, action) => {
   switch (action.type) {
     case "INCREMENT":
@@ -11,5 +19,4 @@ const counterReducer = (state, action) => {
   }
 };
 
-
-console.log(counterReducer(3, { type: "INCREMENT" }))
+console.log(counterReducer(13, incrementAction));
